@@ -60,6 +60,14 @@ resetBtn.addEventListener('click', resetTimer);
 
 var interval;
 
+document.addEventListener('keydown', (event) => {
+  if(event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40){
+    if(interval == null){
+      startTimer();
+    }
+  }
+});
+
 function startTimer() {
   startTime = Date.now();
   interval = setInterval(function() {
