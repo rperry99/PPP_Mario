@@ -59,6 +59,8 @@ startBtn.addEventListener('click', startTimer);
 resetBtn.addEventListener('click', resetTimer);
 
 var interval;
+var elapsedTime;
+var highScore = 999999;
 
 document.addEventListener('keydown', (event) => {
   if(event.keyCode === 37 || event.keyCode === 38 || event.keyCode === 39 || event.keyCode === 40){
@@ -69,16 +71,21 @@ document.addEventListener('keydown', (event) => {
 });
 
 function startTimer() {
+  elapsedTime = 0;
   startTime = Date.now();
   interval = setInterval(function() {
-    var elapsedTime = Date.now() - startTime;
+    elapsedTime = Date.now() - startTime;
     timer.innerHTML = (msToTime(elapsedTime));
   }, 10);
 }
 
 function stopTimer() {
   clearInterval(interval);
-  final.innerHTML = "Personal Best: " + timer.innerHTML;
+  if(elapsedTime < highScore){
+    final.innerHTML = "Personal Best: " + timer.innerHTML;
+    highScore = elapsedTime;
+  }
+  console.log("elapsed: " + elapsedTime + "highscore:" + highScore);
   alert('Congratulations! Your time was: ' + timer.innerHTML);
   interval = null;
 }
