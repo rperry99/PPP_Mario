@@ -40,6 +40,7 @@
       this.hit = true;
       player.flag();
       this.vel = [0, 2];
+      // Reload the page
       document.location.reload(true);
     }
   }
