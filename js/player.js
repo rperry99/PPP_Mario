@@ -251,6 +251,8 @@
 				player = new Mario.Player(level.playerPos);
 				level.loader.call();
 				input.reset();
+				// Refresh upon death
+				document.location.reload(true);
 			}
 		}
 		else {
